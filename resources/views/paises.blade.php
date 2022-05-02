@@ -17,22 +17,29 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>País</th>
-                <th>Capital</th>
-                <th>Moneda</th>
-                <th>Poblacion</th>
+                <th><font size ="5", color ="violet"> País</font></th>
+                <th><font size ="5", color ="red">Capital</font></th>
+                <th><font size ="5", color ="pink">Moneda</font></th>
+                <th><font size ="5", color ="golde">Poblacion</font></th>
+                <th><font size ="5", color ="green">Ciudades</font></th>
             </tr>
+            
            
         </thead>
 
         <tbody>
             @foreach($Paises as $pais => $infopais)
             <tr>
-                <td>{{ $pais }}</td>
-                <td>{{ $infopais["Capital"] }}</td>
-                <td>{{ $infopais["Moneda"] }}</td>
-                <td>{{ $infopais["Poblacion"] }}</td>
-            </tr>
+                <td rowspan='{{ count($infopais["Ciudades"])}}'>{{ $pais }}</td>
+                <td rowspan='{{ count($infopais["Ciudades"])}}'>{{ $infopais["Capital"] }}</td>
+                <td rowspan='{{ count($infopais["Ciudades"])}}'>{{ $infopais["Moneda"] }}</td>
+                <td rowspan='{{ count($infopais["Ciudades"])}}'>{{ $infopais["Poblacion"] }}</td>
+                @foreach($infopais["Ciudades"] as $Ciudad)
+                 
+                    <td class="p-3 mb-2 bg-warning text-dark">{{$Ciudad}}</td>
+                </tr>
+                @endforeach
+            
             @endforeach
         </tbody>
         <tfoot></tfoot>
