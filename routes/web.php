@@ -100,3 +100,6 @@ Route:: get( 'paises', function(){
     ->with("Paises" ,$Paises);
 });
 
+Route::get('prueba', function(){
+    return view('productos.new');
+});
